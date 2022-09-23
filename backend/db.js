@@ -14,24 +14,3 @@ module.exports = async () => {
         console.log("Could not connect to database", error);
     }
 };
-
-
-module.exports.findStoredTasks = async function () {
-    console.log(task.schema)
-    let document = mongoose.model('task', task.schema)
-    let final = [];
-
-    return await document.find();
-}
-
-module.exports.addNewTask = function (task) {
-    let document = mongoose.model('task', task)
-    const newTask = new document({task: "exampleTask"});
-    newTask.save(function (err) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("saved");
-        }
-    });
-}
